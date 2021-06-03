@@ -1,0 +1,29 @@
+<template name="timetracker">
+  {{#if timerIsRunning}}
+  <div class="input-group">
+    <span class="form-control text-center js-timer">00:00:00</span>
+    <div class="input-group-append">
+      {{#if isWidget}}
+        <button type="button" class="btn btn-outline-secondary js-stop">
+          <i class="fa fa-stopwatch"></i>
+        </button>
+      {{else}}
+        <button type="button" class="btn btn-outline-secondary js-stop">
+          <i class="fa fa-stop"></i>
+        </button>
+      {{/if}}
+    </div>
+  </div>
+  {{else}}
+  <div class="input-group">
+    <!-- <button class="btn btn-secondary border js-start form-control"> -->
+      <span class="form-control text-center">{{t "tracktime.start_timer"}}</span> 
+    <!-- </button> -->
+    <div class="input-group-append">
+      <button type="button" class="btn btn-outline-secondary js-start">
+        <i class="fa fa-circle"></i>
+      </button>
+    </div>
+  </div>
+  {{/if}}
+</template>

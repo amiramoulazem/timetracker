@@ -1,0 +1,38 @@
+<template name="allprojectschart">
+  <div class="row">
+    <div class="col-12 col-md-4">
+      {{t "overview.total_time_tracked"}} <br/>
+      {{timeInUserUnit(totalHours)}} ({{timeunitVerbose}})
+      <br/>
+      <button type="button" class="btn btn-link" data-toggle="collapse" data-target=".js-allproject-filter"><i class="fa fa-funnel-dollar"></i>&nbsp; {{t "details.filter"}}</button>
+      <div class="collapse card js-allproject-filter all-projects-bg">
+        <div class="card-body p-2">
+          <div class="custom-control custom-switch">
+            <input id="showNotBillableTime" type="checkbox" class="custom-control-input"/>
+            <label class="custom-control-label" for="showNotBillableTime">{{t "settings.show_not_billable_time"}}</label>
+          </div>
+          <div class="custom-control custom-switch form-check pull-right">
+            <input id="showArchived" type="checkbox" class="custom-control-input"/>
+            <label class="custom-control-label" for="showArchived">{{t "navigation.show_archived"}}</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-md-3 text-center">
+      {{#if topTasks}}
+        <span>{{t "overview.top_tasks"}}</span>
+      {{else}}
+        <span>&nbsp;</span>
+      {{/if}}
+      <div class="js-pie-chart-container" style="max-height: 160px;">
+        <div class="my-2" style="margin:auto; width:144px; height:144px; border-radius:50%; background-color: rgba(0,0,0,0.1);"></div>
+      </div>
+    </div>
+    <div class="d-none d-md-block col-md-5 text-center">
+      <span>{{t "overview.three_month_history"}}</span>
+      <div class="js-chart-container" style="max-height: 160px;">
+        <div class="my-2" style="margin:auto; width:240px; height:135px; background-color:rgba(0,0,0,0.1);"></div>
+      </div>
+    </div>
+  </div>
+</template>

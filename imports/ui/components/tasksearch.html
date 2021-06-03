@@ -1,0 +1,31 @@
+<template name="tasksearch">
+      <div class="input-group">
+        <input type="text" value="{{task}}" class="js-tasksearch-input form-control" placeholder='{{t "tracktime.task_placeholder"}}'/>
+        {{#if displayTaskSelectionIcon}}
+          <div class="input-group-append">
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#taskSelectPopup">
+                <i class="fas fa-list-alt"></i>
+            </button>
+          </div>
+        {{/if}}
+      </div>
+      {{#if displayTaskSelectionIcon}}
+        {{> taskSelectPopup projectId=projectId}}
+      {{/if}}
+  {{#if tasks}}
+    <div class="list-group js-tasksearch-results position-absolute d-none" style="z-index:999;">
+      {{#unless Template.subscriptionsReady}}
+        <div class="list-group-item">
+          {{t "task.searching"}}
+        </div>
+      {{/unless}}
+      {{#each tasks}}
+        <button type="button" id="{{id}}" class="list-group-item list-group-item-action js-tasksearch-result" tabindex="{{@index}}">
+          {{#if wekan}}<img src="/img/wekan.png"/>{{/if}}
+          {{#if zammad}}<img style="width:15px;" src="/img/zammad.svg"/>{{/if}}
+          &nbsp;<span class="js-tasksearch-task-name">{{emojify (name)}}</span>
+        </button>
+      {{/each}}
+    </div>
+  {{/if}}
+</template>
